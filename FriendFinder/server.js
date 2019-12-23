@@ -7,14 +7,14 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyParser.text());
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
+app.get("/", function(req, res) {
+  res.send("Welcome to the Star Wars Page!");
+});
+
+
 
 app.listen(PORT, function() {
-  // Log (server-side) when our server has started
-  console.log(`Server listening on: http://localhost:${PORT}`);
+  console.log('Friend Finder app is listening on PORT: ' + PORT);
 });
